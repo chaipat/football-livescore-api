@@ -6,8 +6,8 @@ const router = express.Router();
 // Endpoint to get matches for today and tomorrow
 router.get('/', (req, res) => {
     const query = `
-        SELECT * FROM matches
-        WHERE DATE(match_time) IN (CURDATE(), DATE_ADD(CURDATE(), INTERVAL 1 DAY))
+        SELECT * FROM ba_program
+        WHERE DATE(kickoff) IN (CURDATE(), DATE_ADD(CURDATE(), INTERVAL 1 DAY))
     `;
     connection.query(query, (err, results) => {
         if (err) {
